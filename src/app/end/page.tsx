@@ -24,18 +24,17 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCountdown(prev => {
-        if (prev <= 1) {
-          router.push('/list')
-          clearInterval(interval)
-        }
-        return prev - 1
-      })
+    if (countdown <= 0) {
+      router.push('/list')
+      return
+    }
+
+    const timer = setTimeout(() => {
+      setCountdown(prev => prev - 1)
     }, 1000)
 
-    return () => clearInterval(interval)
-  }, [router])
+    return () => clearTimeout(timer)
+  }, [countdown, router])
 
 
   return (
