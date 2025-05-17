@@ -2,6 +2,7 @@
 
 import { useState , useEffect} from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 interface Question {
   id: string,
@@ -74,16 +75,16 @@ export default function Home() {
           />
         </div>
 
-        <button className="w-full py-3 mb-8 text-white bg-black rounded-full" onClick={handleSubmit} disabled={loading}>
+        <button className="w-full py-3 mb-12 text-white bg-black rounded-full" onClick={handleSubmit} disabled={loading}>
           {loading ? '전송중...' : '전송'}
         </button>
 
         <div className="flex justify-center">
-          <button className="flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
+          <Link href="/about" className="flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 3L19 12L5 21V3Z" fill="currentColor" />
             </svg>
-          </button>
+          </Link>
         </div>
         
       </div>
