@@ -1,4 +1,43 @@
+"use client"
+import { useSearchParams, useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+
+
 export default function Home() {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const secretKey = searchParams.get('key')
+  const [copied, setCopied] = useState(false)
+  const [countdown, setCountdown] = useState(5)
+
+
+  const handleCopy = async () => {
+    if (!secretKey) return
+    try {
+      await navigator.clipboard.writeText(secretKey)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000) // 2초 후 복사 메시지 사라짐
+    } catch (err) {
+      console.error('복사 실패:', err)
+      alert('복사에 실패했습니다.')
+    }
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          router.push('/list')
+          clearInterval(interval)
+        }
+        return prev - 1
+      })
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [router])
+
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white">
       <div className="flex flex-col items-center justify-between h-full max-w-md px-6 py-8">
@@ -13,9 +52,15 @@ export default function Home() {
 
         {/* Bottom content with exact spacing */}
         <div className="flex flex-col items-center w-full mt-auto">
-          <p className="text-gray-400 mb-2 text-sm">m8Xj 2qa9</p>
-          <button className="w-full text-black font-semiboldbg-white rounded-md">기억하기</button>
+          <p className="text-gray-400 mb-2 text-sm">{secretKey}</p>
+          <button className="w-full text-black font-semiboldbg-white rounded-md p-2" onClick={handleCopy}>
+            {copied ? '복사되었음' : '기억하기'}
+          </button>
         </div>
+        
+        <p className="text-xs text-gray-400 mt-4">
+          {countdown}초 후 답변 열람 페이지로 이동합니다.
+        </p>
       </div>
     </div>
   )
