@@ -1,4 +1,25 @@
-export default function Home() {
+'use client'
+
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+
+export default function Home() { 
+  const router = useRouter()
+  const [countdown, setCountdown] = useState(5)
+
+  useEffect(() => {
+    if (countdown <= 0) {
+      router.push('/list/question2')
+      return
+    }
+
+    const timer = setTimeout(() => {
+      setCountdown(prev => prev - 1)
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [countdown, router])
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white">
       <div className="flex flex-col items-center justify-between h-full max-w-md px-6 py-8">
@@ -14,6 +35,9 @@ export default function Home() {
           </p>
         </div>
 
+        <p className="text-xs text-gray-400 mt-4">
+          {countdown}초 후 답변 열람 페이지로 이동합니다.
+        </p>
        
       </div>
     </div>

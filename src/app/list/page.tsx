@@ -17,13 +17,19 @@ interface AnswerItem {
 
 export default async function QAList() {
 
+  //랜덤으로 가져오기 (JS에서 10개 무작위 추출)
   const { data, error } = await supabase
-  .from('answers')
-  .select('answer_text, questions(question_text, question_number)')
-  .order('created_at', { ascending: false })
-  .limit(10)
+    .from('answers')
+    .select('answer_text, questions(question_text, question_number)')
+    .limit(100)
 
-  const items = data as unknown as AnswerItem[]
+
+  console.log(data)
+  function getRandomItems<T>(arr: T[], n: number): T[] {
+    return arr.sort(() => Math.random() - 0.5).slice(0, n);
+  }
+
+  const items = data ? getRandomItems(data as unknown as AnswerItem[], 10) : []
 
 
   if (error) {
@@ -46,7 +52,7 @@ export default async function QAList() {
 
       {/* Bottom Buttons */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-4 flex flex-col gap-3">
-        <Link href="/my" className="w-full bg-black text-white rounded-full py-4 text-center">나의 답변 보기</Link>
+        <Link href="/404_not_found" className="w-full bg-black text-white rounded-full py-4 text-center">나의 답변 보기</Link>
         <Link href="/" className="w-full bg-black text-white rounded-full py-4 text-center">다음 질문</Link>
       </div>
     </div>
