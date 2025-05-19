@@ -47,7 +47,7 @@ export default function EndClient() {
         <div className="flex flex-col items-center w-full mt-auto">
           <p className="text-gray-400 mb-2 text-sm">{secretKey}</p>
           <button className="w-full text-black font-semibold bg-white rounded-md p-2" onClick={handleCopy}>
-            {copied ? '복사되었음' : '기억하기'}
+            {copied ? '복사되었음' : '내 답변을 열람할 수 있는 암호키 기억하기'}
           </button>
         </div>
 

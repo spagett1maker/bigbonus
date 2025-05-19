@@ -69,7 +69,7 @@ export default function Home() {
         <div className="mb-6">
           <textarea
             className="w-full p-4 bg-gray-100 border-none rounded-lg resize-none h-36 focus:outline-none"
-            placeholder="잠깐 당신의 이야기를 발려주세요."
+            placeholder="잠깐 당신의 이야기를 빌려주세요."
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
           />
