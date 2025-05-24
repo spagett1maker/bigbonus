@@ -10,6 +10,38 @@ interface Question {
   question_text: string
 }
 
+import seedrandom from 'seedrandom'
+
+function generateRandomMap(seed: string): { [key: string]: string } {
+  const base = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
+  const specials = ['♠', '♣', '♦', '★', '☆', '☯', '☢', '⚡', '@', '#', '%', '&', '*']
+
+  const rng = seedrandom(seed)
+  const shuffled = base
+    .split('')
+    .sort(() => rng() - 0.5)
+
+  const map: { [key: string]: string } = {}
+  for (let i = 0; i < base.length; i++) {
+    const original = base[i]
+    const sub = shuffled[i]
+    map[original] = rng() < 0.4
+      ? specials[Math.floor(rng() * specials.length)] + sub
+      : sub
+  }
+  return map
+}
+
+function encryptAnswerFancy(answer: string): string {
+  const base64 = btoa(unescape(encodeURIComponent(answer)))
+  const seed = answer // or you could use userId + answer, etc.
+  const map = generateRandomMap(seed)
+  return base64
+    .split('')
+    .map((ch) => map[ch] || ch)
+    .join('')
+}
+
 export default function Home() {
   const router = useRouter()
   const [question, setQuestion] = useState<Question | null>(null)
@@ -45,6 +77,7 @@ export default function Home() {
       body: JSON.stringify({
         question_id: question.id,
         answer_text: answer,
+        encrypted_answer: encryptAnswerFancy(answer),
         user_id: user_id
       }),
     })

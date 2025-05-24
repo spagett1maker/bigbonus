@@ -17,11 +17,10 @@ interface AnswerItem {
 
 export default async function QAList() {
 
-  //랜덤으로 가져오기 (JS에서 10개 무작위 추출)
+  //랜덤으로 가져오기 
   const { data, error } = await supabase
     .from('answers')
     .select('answer_text, questions(question_text, question_number)')
-    .limit(100)
 
 
   console.log(data)
@@ -29,7 +28,7 @@ export default async function QAList() {
     return arr.sort(() => Math.random() - 0.5).slice(0, n);
   }
 
-  const items = data ? getRandomItems(data as unknown as AnswerItem[], 10) : []
+  const items = data ? getRandomItems(data as unknown as AnswerItem[], data.length) : []
 
 
   if (error) {

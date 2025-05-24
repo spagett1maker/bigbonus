@@ -19,7 +19,7 @@ async function getClassifier() {
 }
 
 export async function POST(req: Request) {
-  const { question_id, answer_text, user_id } = await req.json()
+  const { question_id, answer_text, encrypted_answer, user_id } = await req.json()
 
   if (!question_id || !answer_text) {
     return NextResponse.json({ error: 'Invalid input' }, { status: 400 })
@@ -40,6 +40,7 @@ export async function POST(req: Request) {
     {
       question_id,
       answer_text,
+      encrypted_answer,
       secret_key,
       sentiment,
       user_id,

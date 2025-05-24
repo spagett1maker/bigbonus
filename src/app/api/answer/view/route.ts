@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
   const { data, error } = await supabase
     .from("answers")
-    .select("answer_text, sentiment, created_at, question_id")
+    .select("answer_text, encrypted_answer, sentiment, created_at, question_id")
     .eq("secret_key", secret_key)
     .maybeSingle();
 
