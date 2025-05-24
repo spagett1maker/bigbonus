@@ -93,16 +93,29 @@ export default function Home() {
   }
   
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-6 py-8 bg-white">
-      <div className="w-full max-w-md">
+    <div className="flex flex-col items-center justify-center min-h-screen px-10 py-8 bg-white">
+
+      <video
+        className="absolute top-0 left-0 w-full h-screen object-cover z-0"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="/video.mp4" type="video/mp4" />
+        브라우저가 영상을 지원하지 않습니다.
+      </video>
+      <div className="w-full max-w-md z-10">
         <h1 className="mb-12 text-4xl font-normal leading-tight text-black">
           {question?.question_number}. {question?.question_text}
         </h1>
 
         <div className="mb-6">
           <textarea
-            className="w-full p-4 bg-gray-100 border-none rounded-lg resize-none h-36 focus:outline-none"
-            placeholder="잠깐 당신의 이야기를 빌려주세요."
+            className="w-full p-4 bg-gray-200 placeholder:text-gray-500 border-none rounded-lg resize-none h-36 focus:outline-none"
+            placeholder={
+              '잠깐 당신의 이야기를 빌려주세요.\n지금 떠오르는 것이 감정인지 잘 모르겠다면, \n괜찮습니다. 그냥 지금 떠오른 생각을 적어주세요.'
+            }
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
           />

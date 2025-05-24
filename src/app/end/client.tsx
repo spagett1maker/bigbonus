@@ -40,7 +40,7 @@ export default function EndClient() {
         <div className="flex-1"></div>
 
         <div className="flex flex-col items-center text-center mb-32">
-          <h1 className="text-3xl font-normal text-black mb-3">네, 수고하셨습니다.</h1>
+          <h1 className="text-3xl font-normal text-black mb-3">당신의 감정은 잘 흘려보내졌습니다.</h1>
           <p className="text-sm text-gray-500">이 응답은 24시간 뒤에 삭제됩니다.</p>
         </div>
 

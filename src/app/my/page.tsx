@@ -18,43 +18,6 @@ function ensureUserId(): string {
   return userId
 }
 
-// 암호화 함수 추가 (컴포넌트 위에)
-import seedrandom from 'seedrandom'
-
-function generateRandomMap(seed: string): { [key: string]: string } {
-  const base = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
-  const specials = ['♠', '♣', '♦', '★', '☆', '☯', '☢', '⚡', '@', '#', '%', '&', '*']
-
-  const rng = seedrandom(seed)
-  const shuffled = base
-    .split('')
-    .sort(() => rng() - 0.5)
-
-  const map: { [key: string]: string } = {}
-  for (let i = 0; i < base.length; i++) {
-    const original = base[i]
-    const sub = shuffled[i]
-    map[original] = rng() < 0.4
-      ? specials[Math.floor(rng() * specials.length)] + sub
-      : sub
-  }
-  return map
-}
-
-function encryptAnswerFancy(answer: string): string {
-  const base64 = btoa(unescape(encodeURIComponent(answer)))
-  const seed = answer // or you could use userId + answer, etc.
-  const map = generateRandomMap(seed)
-  return base64
-    .split('')
-    .map((ch) => map[ch] || ch)
-    .join('')
-}
-
-
-
-
-
 export default function MyAnswersPage() {
   const [answers, setAnswers] = useState<Answer[]>([])
   const [loading, setLoading] = useState(true)
@@ -90,9 +53,6 @@ export default function MyAnswersPage() {
                 {a.questions?.question_number}. {a.questions?.question_text}
               </p>
               <p className="text-base text-gray-700">{a.answer_text}</p>
-              <p className="text-sm text-gray-500">
-                {encryptAnswerFancy(a.created_at)}
-              </p>
             </div>
           ))
         )}
