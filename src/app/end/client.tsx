@@ -42,7 +42,7 @@ export default function EndClient() {
         <div className="flex flex-col items-center text-center mb-24">
           <h1 className="text-2xl font-normal text-black mb-3">
             당신의 감정은 잘 흘려보내졌습니다. <br/>
-            더 이상 당신의 책입이 아닙니다. <br/>
+            더 이상 당신의 책임이 아닙니다. <br/>
             놓아주세요. <br/>
             당신은 이미 충분히 말했습니다.
           </h1>
