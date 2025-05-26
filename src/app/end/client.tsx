@@ -39,9 +39,14 @@ export default function EndClient() {
       <div className="flex flex-col items-center justify-between h-full max-w-md px-6 py-8">
         <div className="flex-1"></div>
 
-        <div className="flex flex-col items-center text-center mb-32">
-          <h1 className="text-3xl font-normal text-black mb-3">당신의 감정은 잘 흘려보내졌습니다.</h1>
-          <p className="text-sm text-gray-500">이 응답은 24시간 뒤에 삭제됩니다.</p>
+        <div className="flex flex-col items-center text-center mb-24">
+          <h1 className="text-2xl font-normal text-black mb-3">
+            당신의 감정은 잘 흘려보내졌습니다. <br/>
+            더 이상 당신의 책입이 아닙니다. <br/>
+            놓아주세요. <br/>
+            당신은 이미 충분히 말했습니다.
+          </h1>
+          <p className="text-sm text-gray-500">상태 : 휘발 대기 중</p>
         </div>
 
         <div className="flex flex-col items-center w-full mt-auto">

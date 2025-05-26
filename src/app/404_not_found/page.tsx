@@ -30,8 +30,9 @@ export default function Home() {
         <div className="flex flex-col items-center text-center mb-32">
           <h1 className="text-3xl font-normal text-black mb-8">404 not found</h1>
           <p className="text-sm text-gray-500">
-            답변 열람은 다음 질문에 대한 <br/>
-            응답 이후에 가능합니다.
+            당신의 감정은 아직 남아 있습니다. <br/>
+            다시 접근하려면, 하나의 응답이 더 필요합니다. <br/>
+            반복하시겠습니까?
           </p>
         </div>
 
