@@ -102,11 +102,14 @@ export default function Home() {
         muted
         playsInline
       >
-        <source src="/video.mp4" type="video/mp4" />
+        <source src="/video2.mp4" type="video/mp4" />
         브라우저가 영상을 지원하지 않습니다.
       </video>
-      <div className="w-full max-w-md z-10">
-        <h1 className="mb-12 text-4xl font-normal leading-tight text-black">
+
+      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40 z-10" />
+
+      <div className="w-full max-w-md z-20">
+        <h1 className="mb-12 text-4xl font-normal leading-tight text-white">
           {question?.question_number}. {question?.question_text}
         </h1>
 
