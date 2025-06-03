@@ -54,8 +54,8 @@ export default function EmotionBackground() {
 
   return (
     <>
-      <div id="emoji-container" className="fixed top-0 left-0 w-full h-full z-0 opacity-20 pointer-events-none" />
-      <canvas id="line-canvas" className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none mix-blend-screen opacity-15" />
+      <div id="emoji-container" className="fixed top-0 left-0 w-full h-full z-0 opacity-40 pointer-events-none" />
+      <canvas id="line-canvas" className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none mix-blend-screen opacity-50" />
       <style jsx global>{`
         .emoji {
           position: absolute;
