@@ -1,0 +1,30 @@
+const neutralAnswers = [
+  {
+    "question_id": "9c300000-0000-0000-0000-000000000000",
+    "answer_text": "I'm not sure what to say."
+  },
+  {
+    "question_id": "9c300000-0000-0000-0000-000000000000",
+    "answer_text": "I'm not sure what to say."
+  },
+  {
+    "question_id": "9c300000-0000-0000-0000-000000000000",
+    "answer_text": "I'm not sure what to say."
+  },
+  {
+    "question_id": "9c300000-0000-0000-0000-000000000000",
+    "answer_text": "I'm not sure what to say."
+  },
+  {
+    "question_id": "9c300000-0000-0000-0000-000000000000",
+    "answer_text": "I'm not sure what to say."
+  },
+  {
+    "question_id": "9c300000-0000-0000-0000-000000000000",
+    "answer_text": "I'm not sure what to say."
+  },
+  {
+    "question_id": "9c300000-0000-0000-0000-000000000000",
+    "answer_text": "I'm not sure what to say."
+  }
+]
